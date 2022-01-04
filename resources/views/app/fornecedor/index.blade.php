@@ -1,5 +1,27 @@
 <h3>Fornecedores</h3>
 
+@isset($fornecedores)
+    Fornecedor: {{ $fornecedores[2]['nome']}}
+    <br>
+    Status: {{ $fornecedores[2]['status']}}
+    <br>
+    CNPJ: {{ $fornecedores[2]['cnpj'] ?? 'Não informado'}}
+    <br>
+    Telefone: ({{ $fornecedores[2]['ddd'] ?? ''}}) {{ $fornecedores[2]['telefone'] ?? ''}}
+    @switch ($fornecedores[2]['ddd'])
+        @case ('11')
+        São Paulo - SP
+        @break
+        @case ('85')
+        Fortaleza - CE
+        @break
+        @case ('32')
+        Juiz de Fora - MG
+        @break
+        @default
+        Estado não identificado!
+    @endswitch
+@endisset
 
 {{--
 @dd($fornecedores)
@@ -20,15 +42,12 @@
     Unless mensage: Fornecedor Inativo!
 @endunless
 
+    @isset($fornecedores[0]['cnpj'])
+        CNPJ: {{ $fornecedores[0]['cnpj']}}
+        @empty($fornecedores[0]['cnpj'])
+            Vazio
+        @endempty
+    @endisset
+
 --}}
 
-@isset($fornecedores)
-Fornecedor: {{ $fornecedores[1]['nome']}}
-<br>
-Status: {{ $fornecedores[1]['status']}}
-<br>
-@isset($fornecedores[1]['cnpj'])
-CNPJ: {{ $fornecedores[1]['cnpj']}}
-@endisset
-<br>
-@endisset
