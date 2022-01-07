@@ -23,12 +23,19 @@ class FornecedorController extends Controller
                 'telefone' => '0000-0000'
             ],
             2 => [
-                'nome' => 'Fornecedor 2', 
+                'nome' => 'Fornecedor 3', 
                 'status' => 'S',
                 'cnpj' => null,
                 'ddd' => '32', // Juiz de Fora (MG)
                 'telefone' => '0000-0000'
-            ]
+            ],
+            3 => [
+                'nome' => 'Fornecedor 4', 
+                'status' => 'S',
+                'cnpj' => null,
+                'ddd' => '17', // Bebedouro (SP)
+                'telefone' => '0000-0000'
+            ] 
         ];
 
         return view('app.fornecedor.index', compact('fornecedores'));
