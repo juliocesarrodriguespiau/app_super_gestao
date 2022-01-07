@@ -1,6 +1,96 @@
 <h3>Fornecedores</h3>
 
 @isset($fornecedores)
+    @forelse($fornecedores as $indice => $fornecedor)
+        Iteração Atual: {{ $loop->iteration }}
+        <br>
+        Fornecedor: {{ $fornecedor['nome']}}
+        <br>
+        Status: {{ $fornecedor['status']}}
+        <br>
+        CNPJ: {{ $fornecedor['cnpj'] ?? 'Não informado'}}
+        <br>
+        Telefone: ({{ $fornecedor['ddd'] ?? ''}}) {{ $fornecedor['telefone'] ?? ''}}
+        <br>
+        @if($loop->first)
+            <b>Primeira Iteração do Loop!</b>
+        @endif
+        <br>
+        @if($loop->last)
+            <b>Última Iteração do Loop!</b>
+            <br>
+            <b>Total de registros: </b> {{ $loop->count }}
+        @endif
+        <hr>
+    @empty
+        Não existem fornecedores cadastrados!  
+    @endforelse
+@endisset
+
+{{--
+@isset($fornecedores)
+    @forelse($fornecedores as $indice => $fornecedor)
+        Fornecedor: {{ $fornecedor['nome']}}
+        <br>
+        Status: {{ $fornecedor['status']}}
+        <br>
+        CNPJ: {{ $fornecedor['cnpj'] ?? 'Não informado'}}
+        <br>
+        Telefone: ({{ $fornecedor['ddd'] ?? ''}}) {{ $fornecedor['telefone'] ?? ''}}
+        <hr>
+    @empty
+        Não existem fornecedores cadastrados!  
+    @endforelse
+@endisset
+--}}
+{{--
+@isset($fornecedores)
+    @foreach ($fornecedores as $indice => $fornecedor)
+        Fornecedor: {{ $fornecedor['nome']}}
+        <br>
+        Status: {{ $fornecedor['status']}}
+        <br>
+        CNPJ: {{ $fornecedor['cnpj'] ?? 'Não informado'}}
+        <br>
+        Telefone: ({{ $fornecedor['ddd'] ?? ''}}) {{ $fornecedor['telefone'] ?? ''}}
+        <hr>   
+    @endforeach
+@endisset
+--}}
+
+{{--
+@isset($fornecedores)
+    @php $i = 0 @endphp
+    @while(isset($fornecedores[$i]['nome']))
+        Fornecedor: {{ $fornecedores[$i]['nome']}}
+        <br>
+        Status: {{ $fornecedores[$i]['status']}}
+        <br>
+        CNPJ: {{ $fornecedores[$i]['cnpj'] ?? 'Não informado'}}
+        <br>
+        Telefone: ({{ $fornecedores[$i]['ddd'] ?? ''}}) {{ $fornecedores[$i]['telefone'] ?? ''}}
+        <hr>
+        @php $i++ @endphp
+    @endwhile
+@endisset
+--}}
+{{-- 
+@isset($fornecedores)
+    @for($i = 0; isset($fornecedores[$i]); $i++)
+        Fornecedor: {{ $fornecedores[$i]['nome']}}
+        <br>
+        Status: {{ $fornecedores[$i]['status']}}
+        <br>
+        CNPJ: {{ $fornecedores[$i]['cnpj'] ?? 'Não informado'}}
+        <br>
+        Telefone: ({{ $fornecedores[$i]['ddd'] ?? ''}}) {{ $fornecedores[$i]['telefone'] ?? ''}}
+        <hr>
+    @endfor
+@endisset
+--}}
+
+{{-- 
+@isset($fornecedores)
     Fornecedor: {{ $fornecedores[2]['nome']}}
     <br>
     Status: {{ $fornecedores[2]['status']}}
@@ -22,7 +112,7 @@
         Estado não identificado!
     @endswitch
 @endisset
-
+--}}
 {{--
 @dd($fornecedores)
 
